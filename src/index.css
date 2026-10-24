@@ -1511,71 +1511,177 @@ html, body {
   to { transform: rotate(360deg); }
 }
 
-/* Responsive */
+/* ==========================================================================
+   Responsive Scaling (Same exact visual layout on Mobile as Laptop)
+   ========================================================================== */
 @media (max-width: 900px) {
-  .site-header { padding: 0 1.25rem; }
-  .site-footer-bar { padding: 0 1.25rem; }
-  
-  .stats-page-layout,
-  .lot-more-layout {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .site-header { padding: 0 1rem; }
+  .site-footer-bar { padding: 0 1rem; }
+  .main-viewport { padding: 75px 0.75rem 70px; }
+
+  /* Keep 2-column layout on Stats page */
+  .stats-page-layout {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
   }
+  .title-primary { font-size: clamp(1.4rem, 4vw, 2.4rem); }
+  .title-script { font-size: clamp(1.3rem, 3.8vw, 2.2rem); }
   
   .sticky-paper-note {
-    max-width: 100%;
-    transform: rotate(0deg);
+    max-width: 100% !important;
+    padding: 1.5rem 1rem 1rem !important;
+    transform: rotate(-2.5deg) !important;
   }
-  
+  .sticky-note-text { font-size: clamp(0.95rem, 2.8vw, 1.3rem) !important; line-height: 1.4 !important; }
+  .sticky-signature { font-size: clamp(0.85rem, 2.5vw, 1.15rem) !important; }
+  .stats-box-card {
+    padding: 1rem 0.9rem !important;
+  }
+  .stat-row { margin-bottom: 0.9rem !important; }
+  .stat-header { font-size: clamp(0.7rem, 2vw, 0.85rem) !important; }
+  .stat-value { font-size: clamp(0.7rem, 2vw, 0.82rem) !important; }
+  .card-doodle-crown { font-size: 1.5rem !important; bottom: -15px !important; left: 10px !important; }
+
   .handwritten-scribble-top {
-    position: static;
-    transform: none;
-    margin-bottom: 1rem;
-    display: inline-block;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    font-size: clamp(1rem, 3vw, 1.4rem) !important;
+    display: block !important;
+    transform: rotate(8deg) !important;
   }
-  
+
+  /* Keep 3 Polaroids in a row on Memories page */
   .polaroid-grid-three {
-    grid-template-columns: 1fr;
-    max-width: 360px;
-    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.6rem !important;
+    max-width: 100% !important;
   }
-  
-  .memories-title-main { font-size: 2.5rem; }
-  .memories-title-cursive { font-size: 2.3rem; }
-  
+  .polaroid-card {
+    padding: 8px 8px 14px !important;
+  }
+  .polaroid-tape {
+    width: 38px !important;
+    height: 14px !important;
+    top: -8px !important;
+  }
+  .polaroid-caption-text {
+    font-size: clamp(0.65rem, 1.8vw, 0.85rem) !important;
+    line-height: 1.3 !important;
+  }
+  .polaroid-year {
+    font-size: clamp(0.6rem, 1.6vw, 0.75rem) !important;
+    margin-top: 3px !important;
+  }
+  .memories-title-main { font-size: clamp(1.8rem, 5vw, 2.8rem) !important; }
+  .memories-title-cursive { font-size: clamp(1.7rem, 4.8vw, 2.6rem) !important; }
+  .memories-top-scribble { font-size: clamp(0.95rem, 2.6vw, 1.35rem) !important; }
+  .memories-description { font-size: clamp(0.8rem, 2.2vw, 1rem) !important; margin-top: 0.8rem !important; }
+  .memories-divider { margin-bottom: 1.25rem !important; }
+
+  /* Keep 2-column layout on Lot More page */
+  .lot-more-layout {
+    grid-template-columns: 1.15fr 0.85fr !important;
+    gap: 1.25rem !important;
+  }
+  .lot-more-arabic-box {
+    font-size: clamp(0.85rem, 2.4vw, 1.15rem) !important;
+    line-height: 1.6 !important;
+  }
+  .wishes-night-card {
+    padding: 1.4rem 1.1rem !important;
+  }
+  .wishes-item-line {
+    font-size: clamp(1.1rem, 3.2vw, 1.7rem) !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Notebook letter scaling */
   .notebook-paper-sheet {
-    padding: 2rem 1.5rem;
+    padding: 1.8rem 1.2rem 1.4rem 1.8rem !important;
+    line-height: 24px !important;
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 23px,
+      var(--notebook-line) 23px,
+      var(--notebook-line) 24px
+    ) !important;
   }
-  .notebook-margin-line {
-    right: 25px;
-  }
+  .notebook-margin-line { right: 28px !important; }
+  .notebook-header-en { font-size: clamp(1rem, 2.8vw, 1.25rem) !important; margin-bottom: 0.5rem !important; }
+  .notebook-arabic-body { font-size: clamp(0.78rem, 2.1vw, 0.95rem) !important; }
+  .notebook-p-line { margin-bottom: 0.6rem !important; }
+  .notebook-closing-en { font-size: clamp(0.8rem, 2.2vw, 1rem) !important; }
+  .notebook-signature { font-size: clamp(1.4rem, 4vw, 2rem) !important; }
+  .letter-bottom-doodle { font-size: clamp(1.1rem, 3vw, 1.5rem) !important; margin-top: 1rem !important; }
 
+  /* Keep horizontal layout on Outro page */
   .outro-layout {
-    flex-direction: column;
-    gap: 2rem;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
   }
+  .outro-title { font-size: clamp(1.6rem, 4.5vw, 2.4rem) !important; margin-bottom: 0.8rem !important; }
+  .outro-message-lines { font-size: clamp(0.9rem, 2.5vw, 1.3rem) !important; line-height: 1.45 !important; margin-bottom: 1rem !important; }
+  .outro-pink-wish { font-size: clamp(1.4rem, 4vw, 2.2rem) !important; }
   .outro-right-badge {
-    border-left: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding-left: 0;
-    padding-top: 1.5rem;
-    width: 100%;
+    border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-top: none !important;
+    padding-left: 0.9rem !important;
+    padding-top: 0 !important;
+    width: auto !important;
   }
+  .birth-day { font-size: clamp(1.6rem, 4vw, 2.2rem) !important; }
+  .birth-month { font-size: clamp(0.8rem, 2vw, 1rem) !important; }
+  .birth-year { font-size: clamp(0.9rem, 2.2vw, 1.15rem) !important; }
+  .outro-crown-doodle { font-size: 1.3rem !important; }
 
-  .peeking-vinyl-disc {
-    display: none;
+  /* Song Player Page: Peeking vinyl stays VISIBLE and scales with card */
+  .player-card-relative-wrap {
+    max-width: 90% !important;
+    margin: 1rem auto 1.5rem !important;
   }
   .exact-glass-card {
-    padding: 1.8rem 1.5rem;
+    padding: 1.5rem 1.4rem !important;
+    border-radius: 14px !important;
   }
-  .exact-bottom-scribbles-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
-    text-align: center;
+  .exact-card-title { font-size: clamp(1.5rem, 4.2vw, 2.1rem) !important; }
+  .exact-card-subtitle { font-size: clamp(0.75rem, 2vw, 0.9rem) !important; margin-bottom: 1.2rem !important; }
+  
+  .peeking-vinyl-disc {
+    display: flex !important;
+    width: clamp(140px, 32vw, 240px) !important;
+    height: clamp(140px, 32vw, 240px) !important;
+    right: clamp(-28px, -5vw, -45px) !important;
   }
-  .scribble-left, .scribble-center, .scribble-right {
-    transform: none;
-    text-align: center;
+  .ring-a { width: 85% !important; height: 85% !important; }
+  .ring-b { width: 68% !important; height: 68% !important; }
+  .ring-c { width: 50% !important; height: 50% !important; }
+  .peeking-vinyl-center { width: 26% !important; height: 26% !important; }
+
+  .exact-controls-row { gap: 1rem !important; }
+  .exact-play-circle-btn { width: 44px !important; height: 44px !important; }
+
+  /* Quote Below the Song Card */
+  .exact-bottom-quote-wrap {
+    max-width: 90% !important;
+    margin: 1.2rem auto 0 !important;
+  }
+  .exact-bottom-quote-text {
+    font-size: clamp(1.2rem, 3.5vw, 1.7rem) !important;
+  }
+
+  /* Paper tape strips scaling */
+  .paper-tape-strip {
+    padding: 0.65rem 1rem !important;
+    gap: 0.75rem !important;
+  }
+  .strip-text-content {
+    font-size: clamp(0.8rem, 2.2vw, 1rem) !important;
+  }
+  .appreciate-footer-quote {
+    font-size: clamp(1.4rem, 4vw, 2rem) !important;
+    margin-top: 1.5rem !important;
   }
 }
